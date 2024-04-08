@@ -21,6 +21,15 @@
           }
           return hash
         }
+
+        set(key, value) {
+          const index = this.hash(key)
+          if (!this.map[index]) {
+            this.map[index] = []
+          }
+          this.map[index].push({ key, value })
+          this.items++
+        }
       }
     </script>
   </body>
