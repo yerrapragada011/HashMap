@@ -9,7 +9,9 @@
     <script>
       class HashMap {
         constructor() {
-          this.map = new Array(16)
+          this.capacity = 16
+          this.loadFactor = 0.75
+          this.map = new Array(this.capacity)
           this.items = 0
         }
 
@@ -35,6 +37,9 @@
           }
           this.map[index].push({ key, value })
           this.items++
+          if (this.items / this.capacity > this.loadFactor) {
+            this.resize()
+          }
         }
 
         get(key) {
@@ -46,6 +51,19 @@
             }
           }
           return undefined
+        }
+
+        resize() {
+          const oldMap = this.map
+          this.capacity *= 2
+          this.map = new Array(this.capacity)
+          for (const bucket of oldMap) {
+            if (bucket) {
+              for (const { key, value } of bucket) {
+                this.set(key, value)
+              }
+            }
+          }
         }
       }
     </script>
