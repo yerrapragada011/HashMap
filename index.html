@@ -50,7 +50,18 @@
               return this.map[index][i].value
             }
           }
-          return undefined
+          return null
+        }
+
+        has(key) {
+          const index = this.hash(key)
+          if (!this.map[index]) return false
+          for (let i = 0; i < this.map[index].length; i++) {
+            if (this.map[index][i].key === key) {
+              return true
+            }
+          }
+          return false
         }
 
         resize() {
