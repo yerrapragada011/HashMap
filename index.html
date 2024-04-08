@@ -27,8 +27,25 @@
           if (!this.map[index]) {
             this.map[index] = []
           }
+          for (let i = 0; i < this.map[index].length; i++) {
+            if (this.map[index][i].key === key) {
+              this.map[index][i].value = value
+              return
+            }
+          }
           this.map[index].push({ key, value })
           this.items++
+        }
+
+        get(key) {
+          const index = this.hash(key)
+          if (!this.map[index]) return undefined
+          for (let i = 0; i < this.map[index].length; i++) {
+            if (this.map[index][i].key === key) {
+              return this.map[index][i].value
+            }
+          }
+          return undefined
         }
       }
     </script>
