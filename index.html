@@ -98,6 +98,18 @@
           return keysArray
         }
 
+        values() {
+          const valuesArray = []
+          for (let i = 0; i < this.map.length; i++) {
+            if (this.map[i]) {
+              for (let j = 0; j < this.map[i].length; j++) {
+                valuesArray.push(this.map[i][j].value)
+              }
+            }
+          }
+          return valuesArray
+        }
+
         resize() {
           const oldMap = this.map
           this.capacity *= 2
