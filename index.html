@@ -64,6 +64,19 @@
           return false
         }
 
+        remove(key) {
+          const index = this.hash(key)
+          if (!this.map[index]) return false
+          for (let i = 0; i < this.map[index].length; i++) {
+            if (this.map[index][i].key === key) {
+              this.map[index].splice(i, 1)
+              this.items--
+              return true
+            }
+          }
+          return false
+        }
+
         resize() {
           const oldMap = this.map
           this.capacity *= 2
