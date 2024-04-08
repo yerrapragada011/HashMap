@@ -81,6 +81,11 @@
           return this.items
         }
 
+        clear() {
+          this.map = new Array(16)
+          this.size = 0
+        }
+
         resize() {
           const oldMap = this.map
           this.capacity *= 2
