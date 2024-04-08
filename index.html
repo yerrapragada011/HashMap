@@ -6,6 +6,22 @@
     <title>HashMap</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      class HashMap {
+        constructor() {
+          this.map = new Array(16)
+          this.items = 0
+        }
+
+        hash(key) {
+          let hash = 0
+          for (let i = 0; i < key.length; i++) {
+            const char = key.charCodeAt(i)
+            hash = (hash + char) % this.map.length
+          }
+          return hash
+        }
+      }
+    </script>
   </body>
 </html>
