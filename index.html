@@ -21,6 +21,9 @@
             const char = key.charCodeAt(i)
             hash = (hash + char) % this.map.length
           }
+          if (hash < 0 || hash >= this.map.length) {
+            throw new Error('Trying to access index out of bound')
+          }
           return hash
         }
 
